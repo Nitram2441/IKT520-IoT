@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-# Up to and including task 5
+# Task 6 - 8
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
     print("Message received default callback -> " + msg.topic + " " + str(msg.payload))  # Print a received msg
 
