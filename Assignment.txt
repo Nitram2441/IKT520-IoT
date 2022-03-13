@@ -1,0 +1,59 @@
+Tasks:
+
+1. Use the paho-mqtt library and create two clients (publisher and a subscriber). Identify the 
+meanings of the arguments that can be used when creating clients. 
+
+Client ID: Unique client id when connecting to broker
+Clean Session: Determines client type, if true – deletes all info about client on disconnect
+Userdata: user defined data of any kind
+Protocol: MQTT version for this client
+Transport: network protocol? Default 
+
+ 
+2. Connect the publishing client to a Broker. Use the on_connect method to observe the CONNACK 
+reply from the Broker. What does the arguments on the on_connect function mean?  
+
+2.	Client: The client instance for this callback
+
+Userdata: the private userdata set in client() or user_data_set()
+Flags: response flags set by the broker
+Rc: connection result
+
+ 
+3. Connect the subscribing client to the Broker. Make a subscription to the topic CyberSec/IKT520. 
+Use the on_subscription function to learn about the SUBACK reply from the Broker. 
+
+done, see subscriberOne
+ 
+4. Publish a message to the topic CyberSec/IKT520. Investigate about the arguments in the PUBLISH 
+message. Check whether the published message is received to the subscribing client. 
+
+done, see subscriberOne and publiseherOne
+ 
+5. Experiment with single-level and multi-level wildcard subscriptions.  
+
+done, see subscriberOne and publiseherOne
+ 
+6. Create a client and connect to the Broker with clean session set to FALSE. Then, subscribe to the 
+topic Sensor/Temp with QoS 1. Disconnect the subscriber. Create another client and publish to 
+the topic Sensor/Temp with QoS 1. Reconnect the subscriber. What is your observation? Give 
+reasons. 
+
+In this case we get the package, the subscriber says it wants to be remembered with clean session set to false.
+And it says it will send comfirmation of received package with qos set to 1.
+ 
+7. Create a client and connect to the Broker with clean session set to TRUE. Then, subscribe to the 
+topic Sensor/Temp with QoS 1. Disconnect the subscriber. Create another client and publish to 
+the topic Sensor/Temp with QoS 1. Reconnect the subscriber. What is your observation? Give 
+reasons. 
+
+In this case we wont get the package because the subscriber says it does not want to be remembered.
+ 
+8. Create a client and connect to the Broker with clean session set to FALSE. Then, subscribe to the 
+topic Sensor/Temp with QoS 0. Disconnect the subscriber. Create another client and publish to 
+the topic Sensor/Temp with QoS 2. Reconnect the subscriber. What is your observation? Give 
+reasons. 
+
+in this case we wont get the package, even though the subscriber is remembered.
+because when we disconnect the broker does not know, and since we have qos 0 on the subscriber,
+the broker will not expect any comfirmation from the subscriber, so it sends the package to it while it is offline.
