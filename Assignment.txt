@@ -1,4 +1,4 @@
-Tasks:
+Tasks: EX 04 - IoT Protocols - MQTT.pdf
 
 1. Use the paho-mqtt library and create two clients (publisher and a subscriber). Identify the 
 meanings of the arguments that can be used when creating clients. 
